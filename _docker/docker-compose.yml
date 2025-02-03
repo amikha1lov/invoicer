@@ -39,6 +39,8 @@ services:
       POSTGRES_USER: ${DATABASE_USER}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
     restart: unless-stopped
+    ports:
+      - "5416:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
     networks:
