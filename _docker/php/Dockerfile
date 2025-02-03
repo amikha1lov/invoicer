@@ -5,8 +5,6 @@ ARG PGID=1000
 
 RUN apk --no-cache add bash shadow postgresql-dev autoconf make zlib-dev \
     && docker-php-ext-install pdo_pgsql \
-    && pecl install redis \
-    && docker-php-ext-enable redis \
     && groupmod -o -g ${PGID} www-data \
     && usermod -o -u ${PUID} -g www-data www-data
 

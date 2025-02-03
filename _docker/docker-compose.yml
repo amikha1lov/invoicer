@@ -11,7 +11,6 @@ services:
       - ./../:/var/www/
       - php_socket:/var/run
     depends_on:
-      - redis
       - postgres
     networks:
       - app-network
@@ -45,9 +44,10 @@ services:
     networks:
       - app-network
 
-  redis:
-    image: redis:5.0-alpine
-    container_name: ${COMPOSE_PROJECT_NAME}_redis
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    ports:
+      - "15672:15672"
     networks:
       - app-network
 
