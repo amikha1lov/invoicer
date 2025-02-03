@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Tests\Users\Infrastructure\Repository;
+namespace App\Tests\Auth\Infrastructure\Repository;
 
-use App\Users\Application\Factory\UserFactory;
-use App\Users\Domain\Ulid\UlidGeneratorInterface;
-use App\Users\Infrastructure\Repository\UserRepository;
+use App\Auth\Application\Factory\UserFactory;
+use App\Auth\Domain\Ulid\UlidGeneratorInterface;
+use App\Auth\Infrastructure\Repository\UserRepository;
 use Faker\Factory;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\PasswordHasher\PasswordHasherInterface;
 use Symfony\Component\Uid\Ulid as SymfonyUlid;
 
