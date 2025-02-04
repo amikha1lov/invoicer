@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Auth\Application\Factory;
 
+use App\Auth\Application\PasswordHasher\PasswordHasherInterface;
 use App\Auth\Domain\Entity\User;
 use App\Auth\Domain\Factory\UserFactoryInterface;
 use App\Auth\Domain\Ulid\UlidGeneratorInterface;
-use Symfony\Component\PasswordHasher\PasswordHasherInterface;
 
 class UserFactory implements UserFactoryInterface
 {
@@ -20,9 +20,12 @@ class UserFactory implements UserFactoryInterface
 
     public function create(string $email, string $password): User
     {
-        return (new User())
+        $user = (new User())
             ->setUlid($this->ulidGenerator->generate())
-            ->setEmail($email)
-            ->setPassword($this->passwordHasher->hash($password));
+            ->setEmail($email);
+
+        $user->setPassword($this->passwordHasher->hash($user, $password));
+
+        return $user;
     }
 }
