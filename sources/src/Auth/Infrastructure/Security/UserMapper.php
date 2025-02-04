@@ -6,7 +6,7 @@ namespace App\Auth\Infrastructure\Security;
 
 use App\Auth\Domain\Entity\User;
 
-class UserMapper
+class UserMapper implements UserMapperInterface
 {
     public function toAuthenticatedUser(User $user): AuthenticatedUser
     {
