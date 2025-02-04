@@ -37,8 +37,8 @@ class JWTAuthenticator extends AbstractAuthenticator
 
         try {
             $decoded = $this->JWTManager->decode($token);
-        } catch (\Exception $e) {
-            throw new AuthenticationException('Неверный JWT токен');
+        } catch (\Throwable $exception) {
+            throw $exception;
         }
 
         return new SelfValidatingPassport(

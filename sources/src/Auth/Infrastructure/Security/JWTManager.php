@@ -15,7 +15,7 @@ class JWTManager implements JWTManagerInterface
     public function encode(User $user): string
     {
         $issuedAt = time();
-        $expirationTime = $issuedAt + 3600;
+        $expirationTime = $issuedAt + 120;
         $payload = [
             'iat' => $issuedAt,
             'exp' => $expirationTime,
