@@ -29,9 +29,9 @@ jobs:
             
             cp .env.example .env
             
-            docker compose build
+            docker compose -f docker-compose.production.yml build
             
-            docker compose up -d
+            docker compose -f docker-compose.production.yml up -d --remove-orphans
             
             cd /home/deployer/invoicer/sources
             
