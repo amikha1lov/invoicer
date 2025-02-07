@@ -45,12 +45,14 @@ jobs:
             
             echo "MAILER_DSN=${{ secrets.MAILER_DSN }}" >> .env
             
+            pwd 
+            
             cat .env
             
             cd /home/deployer/invoicer/_docker
             
             docker compose exec php bash -c "cd sources && composer install"
             
-            docker compose exec php bash -c "cd sources && php bin/console doctrine:migrations:migrate"
+            docker compose exec php bash -c "cd sources && pwd && ls && php bin/console doctrine:migrations:migrate"
             
             docker compose exec php bash -c "cd sources && supervisorctl restart messenger-consume:*"
