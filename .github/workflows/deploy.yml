@@ -19,7 +19,8 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT }}
           script: |
-            cd /root/app
+            cd /home/deployer/invoicer
+            
             docker ps
 
             git pull origin master
