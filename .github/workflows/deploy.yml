@@ -44,6 +44,8 @@ jobs:
             
             echo "MAILER_DSN=${{ secrets.MAILER_DSN }}" >> .env
             
+            cat .env
+            
             docker compose exec php bash -c "cd sources && composer install"
             
             docker compose exec php bash -c "cd sources && supervisorctl restart messenger-consume:*"
