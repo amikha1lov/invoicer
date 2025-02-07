@@ -47,6 +47,8 @@ jobs:
             
             cat .env
             
+            cd /home/deployer/invoicer/_docker
+            
             docker compose exec php bash -c "cd sources && composer install"
             
             docker compose exec php bash -c "cd sources && supervisorctl restart messenger-consume:*"
