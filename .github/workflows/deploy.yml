@@ -33,7 +33,7 @@ jobs:
             
             docker compose up -d
             
-            cd sources
+            cd /home/deployer/invoicer/sources
             
             echo "APP_ENV=prod" >> .env
             
