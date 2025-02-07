@@ -5,13 +5,13 @@ security:
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
         app_user_provider:
-            id: App\Auth\Infrastructure\Security\UserProvider
+            id: App\Infrastructure\Auth\Security\UserProvider
 
     firewalls:
         api:
             pattern: ^/api/
             stateless: true
-            custom_authenticator: App\Auth\Infrastructure\Security\JWTAuthenticator
+            custom_authenticator: App\Infrastructure\Auth\Security\JWTAuthenticator
 
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -20,6 +20,7 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+        - { path: ^/api/v1/auth/register, roles: PUBLIC_ACCESS }
         - { path: ^/api/v1/auth/login, roles: PUBLIC_ACCESS }
         - { path: ^/api/, roles: ROLE_USER }
 

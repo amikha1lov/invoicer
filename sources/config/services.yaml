@@ -19,6 +19,12 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
-    App\Shared\Infrastructure\EventListener\ExceptionsListener:
+
+    App\Domain\Auth\Repository\UserRepositoryInterface: '@App\Infrastructure\Auth\Persistence\Doctrine\Repository\DoctrineUserRepository'
+
+    App\Infrastructure\Shared\EventListener\ExceptionsListener:
         tags:
             - { name: 'kernel.event_listener', event: 'kernel.exception', priority: 100 }
+    App\Infrastructure\Auth\Persistence\Doctrine\Entity\UserListener:
+        tags:
+            - { name: 'doctrine.event_listener', event: 'prePersist'}
