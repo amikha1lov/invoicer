@@ -51,4 +51,6 @@ jobs:
             
             docker compose exec php bash -c "cd sources && composer install"
             
+            docker compose exec php bash -c "cd sources && php bin/console doctrine:migrations:migrate"
+            
             docker compose exec php bash -c "cd sources && supervisorctl restart messenger-consume:*"
