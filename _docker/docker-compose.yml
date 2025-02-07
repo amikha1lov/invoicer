@@ -47,6 +47,7 @@ services:
       - app-network
 
   rabbitmq:
+    container_name: ${COMPOSE_PROJECT_NAME}_rabbitmq
     image: "rabbitmq:3-management"
     ports:
       - "15672:15672"

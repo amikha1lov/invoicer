@@ -1,14 +1,16 @@
-FROM php:8.3-fpm-alpine
+FROM php:8.3-fpm
 
 ARG PUID=1000
 ARG PGID=1000
 
-RUN apk --no-cache add bash shadow postgresql-dev rabbitmq-c-dev autoconf make zlib-dev  \
+RUN apt-get update && apt-get install -y \
+    supervisor bash libpq-dev librabbitmq-dev autoconf make zlib1g-dev \
     && pecl install amqp \
     && docker-php-ext-install pdo_pgsql \
     && docker-php-ext-enable amqp \
-    && groupmod -o -g ${PGID} www-data \
-    && usermod -o -u ${PUID} -g www-data www-data
+    && groupmod -g ${PGID} www-data \
+    && usermod -u ${PUID} -g www-data www-data \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
@@ -17,8 +19,11 @@ COPY ./php.ini /usr/local/etc/php/conf.d/php-custom.ini
 
 RUN echo "extension=amqp.so" > /usr/local/etc/php/conf.d/amqp.ini
 
+COPY supervisord.conf /etc/supervisor/supervisord.conf
+COPY messenger-worker.conf /etc/supervisor/conf.d/messenger-worker.conf
+
 WORKDIR /var/www
 
 EXPOSE 9000
 
-CMD ["php-fpm"]
+CMD ["sh", "-c", "php-fpm -D && exec /usr/bin/supervisord -c /etc/supervisor/supervisord.conf"]
