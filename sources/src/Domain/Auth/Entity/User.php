@@ -7,7 +7,7 @@ namespace App\Domain\Auth\Entity;
 class User
 {
     private ?int $id = null;
-    private string $email; // TODO поменять на VO + поменять хэшер
+    private string $email;
     private string $password;
 
     public function setId(int $id): static

@@ -20,8 +20,6 @@ jobs:
           port: ${{ secrets.VPS_PORT }}
           script: |
             cd /home/deployer/invoicer
-            
-            docker ps
 
             git pull origin master
 
@@ -47,9 +45,9 @@ jobs:
             
             echo "MAILER_DSN=${{ secrets.MAILER_DSN }}" >> .env
             
-            pwd 
+            echo "JWT_TOKEN=${{ secrets.JWT_TOKEN }}" >> .env
             
-            cat .env
+            echo "EMAIL_FROM=${{ secrets.EMAIL_FROM }}" >> .env
             
             cd /home/deployer/invoicer/_docker
             

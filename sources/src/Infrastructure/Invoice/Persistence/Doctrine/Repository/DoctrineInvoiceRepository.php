@@ -55,8 +55,4 @@ readonly class DoctrineInvoiceRepository implements InvoiceRepositoryInterface
         return $invoice ? $this->mapper->fromDoctrine($invoice) : null;
     }
 
-    public function findByUser(User $user): ?Invoice
-    {
-        //
-    }
 }

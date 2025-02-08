@@ -33,9 +33,4 @@ class LoginController extends AbstractController
             return $this->json($errorResponse, 400);
         }
     }
-    #[Route(path:'/test', name: 'test',  methods: ['GET'])] // тестовый урл с авторизацией
-    public function test()
-    {
-        return $this->json([1,2,3]);
-    }
 }

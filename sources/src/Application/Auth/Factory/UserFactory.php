@@ -9,7 +9,6 @@ use App\Domain\Auth\Entity\User;
 use App\Domain\Auth\Factory\UserFactoryInterface;
 use App\Domain\Auth\ValueObject\Email;
 use App\Domain\Auth\ValueObject\Password;
-use App\Domain\Shared\Ulid\UlidGeneratorInterface;
 
 class UserFactory implements UserFactoryInterface
 {
@@ -26,7 +25,7 @@ class UserFactory implements UserFactoryInterface
             ->setEmail(
                 (new Email($email))
                     ->getEmail()
-            )->setPassword($password); // TODO убрать
+            )->setPassword($password);
 
         $hashedPassword = $this->passwordHasher->hash($user,
             (new Password($password))

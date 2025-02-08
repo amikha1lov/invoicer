@@ -10,12 +10,12 @@ use App\Infrastructure\Auth\Exceptions\LoadUserByIdentifierException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 
-class UserProvider implements UserProviderInterface
+readonly class UserProvider implements UserProviderInterface
 {
 
     public function __construct(
-        private readonly UserMapper $userMapper,
-        private readonly UserRepositoryInterface $userRepository,
+        private UserMapper              $userMapper,
+        private UserRepositoryInterface $userRepository,
     )
     {
     }

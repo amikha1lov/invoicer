@@ -7,7 +7,6 @@ namespace App\Infrastructure\Invoice\Service;
 use App\Domain\Invoice\Entity\Invoice;
 use App\Domain\Invoice\Service\InvoicePDFGeneratorInterface;
 use Dompdf\Dompdf;
-use Dompdf\Options;
 use Twig\Environment;
 
 readonly class InvoicePDFGenerator implements InvoicePDFGeneratorInterface

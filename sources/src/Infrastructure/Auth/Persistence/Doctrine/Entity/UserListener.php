@@ -4,16 +4,17 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Auth\Persistence\Doctrine\Entity;
 
-use App\Domain\Auth\Context\CurrentUserInterface;
 use App\Infrastructure\Auth\Persistence\Doctrine\Mapper\DoctrineUserMapper;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Event\PrePersistEventArgs;
+use Symfony\Bundle\SecurityBundle\Security;
 
 class UserListener
 {
     public function __construct(
         protected EntityManagerInterface $entityManager,
-        protected DoctrineUserMapper     $userMapper
+        protected DoctrineUserMapper     $userMapper,
+        protected Security     $security
     )
     {
     }
@@ -28,7 +29,10 @@ class UserListener
 
         $userReference = $this->entityManager->getReference(
             DoctrineUser::class,
-            1 // TODO понять как правильно получить тут текущего юзера
+            $this->security
+                ->getToken()
+                ->getUser()
+                ->getId()
         );
 
         $entity->setUser($userReference);
