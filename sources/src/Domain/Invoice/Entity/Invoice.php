@@ -121,7 +121,8 @@ class Invoice
 
     public function getTotalPrice(): float
     {
-        return array_sum(array_map(fn($item) => $item->getPrice(), $this->items));
+        /* @var InvoiceItem $item */
+        return array_sum(array_map(fn($item) => $item->getTotal(), $this->items));
     }
 
 }
