@@ -11,5 +11,5 @@ use App\Domain\Invoice\ValueObject\Supplier;
 
 interface InvoiceFactoryInterface
 {
-    public function create(Client $client, Supplier $supplier, Bank $bank, string $number): Invoice;
+    public function create(Client $client, Supplier $supplier, Bank $bank, string $number, array $items): Invoice;
 }

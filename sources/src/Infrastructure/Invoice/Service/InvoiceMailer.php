@@ -6,7 +6,6 @@ namespace App\Infrastructure\Invoice\Service;
 
 use App\Domain\Invoice\Entity\Invoice;
 use App\Domain\Invoice\Service\InvoiceMailerInterface;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Domain\Invoice\Entity;
 
 use App\Domain\Auth\Entity\User;
+use App\Domain\Invoice\ValueObject\Item;
 use DateTimeImmutable;
 
 class Invoice
@@ -21,7 +22,13 @@ class Invoice
         private iterable          $items,
     )
     {
-
+        /* @var Item $item */
+        $this->items = array_map(fn($item) => (new InvoiceItem())
+            ->setName($item->getName())
+            ->setPrice($item->getPrice())
+            ->setQuantity($item->getQuantity())
+            ->setInvoice($this),
+            $this->items);
     }
 
     public function getId(): ?int
@@ -81,7 +88,7 @@ class Invoice
 
     public function getDate(): string
     {
-        return $this->date->format('Y-m-d');
+        return $this->date->format('d.m.Y');
     }
 
     public function setDate(DateTimeImmutable $date): Invoice
@@ -110,6 +117,11 @@ class Invoice
     {
         $this->items = $items;
         return $this;
+    }
+
+    public function getTotalPrice(): float
+    {
+        return array_sum(array_map(fn($item) => $item->getPrice(), $this->items));
     }
 
 }

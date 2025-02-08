@@ -23,7 +23,8 @@ readonly class SubmitInvoiceUseCase
             $request->client,
             $request->supplier,
             $request->bank,
-            $request->number
+            $request->number,
+            $request->items
         );
 
         $this->invoiceRepository->save($invoice);

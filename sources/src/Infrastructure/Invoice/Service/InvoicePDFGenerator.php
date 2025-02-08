@@ -21,7 +21,7 @@ readonly class InvoicePDFGenerator implements InvoicePDFGeneratorInterface
 
     public function generate(Invoice $invoice): string
     {
-        $dompdf = new Dompdf(new Options(['isRemoteEnabled' => true]));
+        $dompdf = new Dompdf();
 
         $htmlContent = $this->twig->render('invoice.html.twig', [
             'invoice' => $invoice,

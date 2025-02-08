@@ -34,8 +34,8 @@ class DoctrineInvoice implements UserAwareEntityInterface
     #[JoinColumn(name: "supplier_id", referencedColumnName: "id", onDelete: "CASCADE")]
     private ?DoctrineSupplier $supplier = null;
 
-    #[OneToMany(targetEntity: DoctrineInvoiceItem::class, mappedBy: 'invoice')]
-    private iterable $items = [];
+    #[OneToMany(targetEntity: DoctrineInvoiceItem::class, mappedBy: 'invoice', cascade: ["persist"])]
+    private iterable $items;
 
     #[Id]
     #[Column]
@@ -88,7 +88,7 @@ class DoctrineInvoice implements UserAwareEntityInterface
 
     public function setItems(iterable $items): static
     {
-        $this->items[] = $items;
+        $this->items = $items;
         return $this;
     }
 

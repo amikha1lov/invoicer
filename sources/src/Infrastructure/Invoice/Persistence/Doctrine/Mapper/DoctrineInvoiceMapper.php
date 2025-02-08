@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace App\Infrastructure\Invoice\Persistence\Doctrine\Mapper;
 
 use App\Domain\Invoice\Entity\Invoice;
+use App\Domain\Invoice\Entity\InvoiceItem;
 use App\Domain\Invoice\Factory\InvoiceFactoryInterface;
 use App\Infrastructure\Invoice\Persistence\Doctrine\Entity\DoctrineBank;
 use App\Infrastructure\Invoice\Persistence\Doctrine\Entity\DoctrineClient;
 use App\Infrastructure\Invoice\Persistence\Doctrine\Entity\DoctrineInvoice;
+use App\Infrastructure\Invoice\Persistence\Doctrine\Entity\DoctrineInvoiceItem;
 use App\Infrastructure\Invoice\Persistence\Doctrine\Entity\DoctrineSupplier;
 
 readonly class DoctrineInvoiceMapper
@@ -44,15 +46,16 @@ readonly class DoctrineInvoiceMapper
             ->setDate(\DateTime::createFromImmutable(new \DateTimeImmutable($invoice->getDate())))
             ->setNumber($invoice->getNumber());
 
-//        $doctrineInvoiceItems = \array_map(function (InvoiceItem $invoiceItem) {
-//            return (new DoctrineInvoiceItem())
-//                ->setName($invoiceItem->getName())
-//                ->setPrice($invoiceItem->getPrice())
-//                ->setQuantity($invoiceItem->getQuantity())
-//                ->setInvoice($invoiceItem->getInvoice());
-//        },$invoice->getItems());
-//
-//        $doctrineInvoice->setItems($doctrineInvoiceItems);
+        $doctrineInvoiceItems = \array_map(function (InvoiceItem $invoiceItem) use ($doctrineInvoice) {
+            return (new DoctrineInvoiceItem())
+                ->setName($invoiceItem->getName())
+                ->setPrice($invoiceItem->getPrice())
+                ->setQuantity($invoiceItem->getQuantity())
+                ->setInvoice($doctrineInvoice);
+        },$invoice->getItems());
+
+        $doctrineInvoice->setItems($doctrineInvoiceItems);
+
         return $doctrineInvoice;
     }
 

@@ -6,16 +6,23 @@ namespace App\Application\Invoice\UseCase;
 
 use App\Domain\Invoice\ValueObject\Bank;
 use App\Domain\Invoice\ValueObject\Client;
+use App\Domain\Invoice\ValueObject\Item;
 use App\Domain\Invoice\ValueObject\Supplier;
 
-readonly class SubmitInvoiceUseCaseRequest
+class SubmitInvoiceUseCaseRequest
 {
     public function __construct(
         public Client   $client,
         public Supplier $supplier,
         public Bank     $bank,
-        public string   $number
+        public string   $number,
+        public array    $items,
     )
     {
+        $this->items = array_map(fn($item) => new Item(
+            $item['name'],
+            $item['quantity'],
+            $item['price']
+        ), $this->items);
     }
 }

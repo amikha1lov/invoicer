@@ -28,7 +28,7 @@ class DoctrineInvoiceItem
     private int $quantity;
 
     #[Column(type: 'string')]
-    private string $price;
+    private float $price;
 
     #[ManyToOne(targetEntity: DoctrineInvoice::class, inversedBy: 'items')]
     #[JoinColumn(name: 'invoice_id', referencedColumnName: 'id')]
@@ -67,12 +67,12 @@ class DoctrineInvoiceItem
         return $this;
     }
 
-    public function getPrice(): string
+    public function getPrice(): float
     {
         return $this->price;
     }
 
-    public function setPrice(string $price): DoctrineInvoiceItem
+    public function setPrice(float $price): DoctrineInvoiceItem
     {
         $this->price = $price;
         return $this;

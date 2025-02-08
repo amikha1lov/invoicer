@@ -13,7 +13,7 @@ use DateTimeImmutable;
 
 class InvoiceFactory implements InvoiceFactoryInterface
 {
-    public function create(Client $client, Supplier $supplier, Bank $bank, string $number): Invoice
+    public function create(Client $client, Supplier $supplier, Bank $bank, string $number, array $items): Invoice
     {
         $clientEntity = new \App\Domain\Invoice\Entity\Client();
         $clientEntity->setName($client->getName());
@@ -36,7 +36,7 @@ class InvoiceFactory implements InvoiceFactoryInterface
             $bankEntity,
             new DateTimeImmutable(),
             $number,
-            []
+            $items
         ));
     }
 }
