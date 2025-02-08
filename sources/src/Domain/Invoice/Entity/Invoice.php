@@ -20,15 +20,16 @@ class Invoice
         private DateTimeImmutable $date,
         private string            $number,
         private iterable          $items,
-    )
-    {
+    ) {
         /* @var Item $item */
-        $this->items = array_map(fn($item) => (new InvoiceItem())
+        $this->items = array_map(
+            fn ($item) => (new InvoiceItem())
             ->setName($item->getName())
             ->setPrice($item->getPrice())
             ->setQuantity($item->getQuantity())
             ->setInvoice($this),
-            $this->items);
+            $this->items
+        );
     }
 
     public function getId(): ?int
@@ -122,7 +123,7 @@ class Invoice
     public function getTotalPrice(): float
     {
         /* @var InvoiceItem $item */
-        return array_sum(array_map(fn($item) => $item->getTotal(), $this->items));
+        return array_sum(array_map(fn ($item) => $item->getTotal(), $this->items));
     }
 
 }

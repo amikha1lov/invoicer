@@ -8,7 +8,6 @@ readonly class SubmitInvoiceUseCaseResponse
 {
     public function __construct(
         public int $invoiceId,
-    )
-    {
+    ) {
     }
 }

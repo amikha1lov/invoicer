@@ -13,8 +13,7 @@ class SymfonyPasswordHasher implements PasswordHasherInterface
     public function __construct(
         private readonly SymfonyHasher       $passwordHasher,
         private readonly UserMapperInterface $userMapper
-    )
-    {
+    ) {
     }
 
     public function hash(User $user, string $password): string

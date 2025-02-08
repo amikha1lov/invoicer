@@ -12,8 +12,7 @@ class DoctrineUserMapper
 {
     public function __construct(
         private readonly SerializerInterface $serializer
-    )
-    {
+    ) {
     }
 
     public function toDoctrine(User $user): DoctrineUser

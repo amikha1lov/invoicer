@@ -16,11 +16,10 @@ class LoginController extends AbstractController
 {
     public function __construct(
         private readonly LoginUseCase $loginUseCase
-    )
-    {
+    ) {
     }
 
-    #[Route(path:'/auth/login', name: 'login',  methods: ['POST'])]
+    #[Route(path:'/auth/login', name: 'login', methods: ['POST'])]
     public function __invoke(#[MapRequestPayload] LoginUseCaseRequest $request): JsonResponse
     {
         try {

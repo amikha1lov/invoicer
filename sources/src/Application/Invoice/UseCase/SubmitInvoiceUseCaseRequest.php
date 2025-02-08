@@ -17,13 +17,12 @@ class SubmitInvoiceUseCaseRequest
         public Bank     $bank,
         public string   $number,
         public array    $items,
-    )
-    {
+    ) {
         if (count($this->items) === 0) {
             throw new \InvalidArgumentException('Количество услуг/ товаров должно было больше нуля');
         }
 
-        $this->items = array_map(fn($item) => new Item(
+        $this->items = array_map(fn ($item) => new Item(
             $item['name'],
             $item['quantity'],
             $item['price']

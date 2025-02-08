@@ -16,11 +16,10 @@ class RegisterController extends AbstractController
 {
     public function __construct(
         private readonly RegisterUseCase $registerUseCase
-    )
-    {
+    ) {
     }
 
-    #[Route(path:'/auth/register', name: 'register',  methods: ['POST'])]
+    #[Route(path:'/auth/register', name: 'register', methods: ['POST'])]
     public function __invoke(#[MapRequestPayload] RegisterUseCaseRequest $request): JsonResponse
     {
         try {

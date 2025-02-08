@@ -8,7 +8,6 @@ class RegisterUseCaseResponse
 {
     public function __construct(
         public readonly string $token,
-    )
-    {
+    ) {
     }
 }

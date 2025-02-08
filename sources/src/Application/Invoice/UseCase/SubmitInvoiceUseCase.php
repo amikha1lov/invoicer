@@ -13,8 +13,7 @@ readonly class SubmitInvoiceUseCase
     public function __construct(
         private InvoiceFactory             $invoiceFactory,
         private InvoiceRepositoryInterface $invoiceRepository
-    )
-    {
+    ) {
     }
 
     public function __invoke(SubmitInvoiceUseCaseRequest $request): InvoicePersistedEvent

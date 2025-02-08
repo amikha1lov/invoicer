@@ -15,8 +15,7 @@ readonly class DoctrineUserRepository implements UserRepositoryInterface
     public function __construct(
         private EntityManagerInterface $entityManager,
         private DoctrineUserMapper $mapper
-    )
-    {
+    ) {
     }
 
     public function save(User $user): void

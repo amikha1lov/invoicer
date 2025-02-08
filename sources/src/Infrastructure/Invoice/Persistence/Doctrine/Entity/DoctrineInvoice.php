@@ -19,7 +19,6 @@ use Doctrine\ORM\Mapping\Table;
 #[Table(name: "invoices")]
 class DoctrineInvoice implements UserAwareEntityInterface
 {
-
     use UserTrait;
 
     #[ManyToOne(targetEntity: DoctrineBank::class, cascade: ["persist"])]

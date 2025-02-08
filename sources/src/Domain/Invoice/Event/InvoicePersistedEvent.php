@@ -10,8 +10,7 @@ class InvoicePersistedEvent
 {
     public function __construct(
         protected Invoice $invoice
-    )
-    {
+    ) {
     }
 
     public function getInvoice(): Invoice

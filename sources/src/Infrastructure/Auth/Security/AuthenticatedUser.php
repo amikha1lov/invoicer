@@ -15,8 +15,7 @@ class AuthenticatedUser implements UserInterface, PasswordAuthenticatedUserInter
         public ?int   $id = null,
         public string $email,
         public string $password
-    )
-    {
+    ) {
     }
 
     public function getRoles(): array

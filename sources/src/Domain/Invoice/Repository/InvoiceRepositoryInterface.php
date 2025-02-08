@@ -9,6 +9,6 @@ use App\Domain\Invoice\Entity\Invoice;
 
 interface InvoiceRepositoryInterface
 {
-    public function save(Invoice $invoice):void;
+    public function save(Invoice $invoice): void;
     public function findById(int $id): ?Invoice;
 }

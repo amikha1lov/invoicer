@@ -9,7 +9,6 @@ use App\Domain\Invoice\Entity\Client;
 use App\Domain\Invoice\Entity\Invoice;
 use App\Domain\Invoice\Entity\InvoiceItem;
 use App\Domain\Invoice\Entity\Supplier;
-use App\Domain\Invoice\Factory\InvoiceFactoryInterface;
 use App\Infrastructure\Invoice\Persistence\Doctrine\Entity\DoctrineBank;
 use App\Infrastructure\Invoice\Persistence\Doctrine\Entity\DoctrineClient;
 use App\Infrastructure\Invoice\Persistence\Doctrine\Entity\DoctrineInvoice;
@@ -19,12 +18,6 @@ use DateTimeImmutable;
 
 readonly class DoctrineInvoiceMapper
 {
-    public function __construct(
-        private InvoiceFactoryInterface $invoiceFactory
-    )
-    {
-    }
-
     public function toDoctrine(Invoice $invoice): DoctrineInvoice
     {
         // TODO serializer
@@ -56,7 +49,7 @@ readonly class DoctrineInvoiceMapper
                 ->setPrice($invoiceItem->getPrice())
                 ->setQuantity($invoiceItem->getQuantity())
                 ->setInvoice($doctrineInvoice);
-        },$invoice->getItems());
+        }, $invoice->getItems());
 
         $doctrineInvoice->setItems($doctrineInvoiceItems);
 

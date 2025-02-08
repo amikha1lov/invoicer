@@ -14,8 +14,7 @@ class UserFactory implements UserFactoryInterface
 {
     public function __construct(
         private readonly PasswordHasherInterface $passwordHasher,
-    )
-    {
+    ) {
     }
 
     public function create(string $email, string $password): User
@@ -27,9 +26,11 @@ class UserFactory implements UserFactoryInterface
                     ->getEmail()
             )->setPassword($password);
 
-        $hashedPassword = $this->passwordHasher->hash($user,
+        $hashedPassword = $this->passwordHasher->hash(
+            $user,
             (new Password($password))
-                ->getPassword());
+                ->getPassword()
+        );
 
         $user->setPassword($hashedPassword);
 

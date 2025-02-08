@@ -18,8 +18,7 @@ readonly class DoctrineInvoiceRepository implements InvoiceRepositoryInterface
         private EntityManagerInterface $entityManager,
         private DoctrineInvoiceMapper  $mapper,
         private DoctrineUserMapper  $userMapper
-    )
-    {
+    ) {
     }
 
     public function save(Invoice $invoice): void

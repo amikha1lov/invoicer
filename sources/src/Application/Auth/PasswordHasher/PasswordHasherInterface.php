@@ -8,6 +8,6 @@ use App\Domain\Auth\Entity\User;
 
 interface PasswordHasherInterface
 {
-    public function hash(User $user,string $password): string;
-    public function isValid(User $user,string $password): bool;
+    public function hash(User $user, string $password): string;
+    public function isValid(User $user, string $password): bool;
 }

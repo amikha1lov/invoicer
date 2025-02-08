@@ -6,5 +6,4 @@ namespace App\Infrastructure\Auth\Persistence\Doctrine\Entity;
 
 interface UserAwareEntityInterface
 {
-
 }

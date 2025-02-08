@@ -11,11 +11,9 @@ use Twig\Environment;
 
 readonly class InvoicePDFGenerator implements InvoicePDFGeneratorInterface
 {
-
     public function __construct(
         private Environment $twig
-    )
-    {
+    ) {
     }
 
     public function generate(Invoice $invoice): string

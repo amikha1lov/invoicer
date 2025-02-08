@@ -12,12 +12,10 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 readonly class UserProvider implements UserProviderInterface
 {
-
     public function __construct(
         private UserMapper              $userMapper,
         private UserRepositoryInterface $userRepository,
-    )
-    {
+    ) {
     }
 
     public function refreshUser(UserInterface $user): UserInterface

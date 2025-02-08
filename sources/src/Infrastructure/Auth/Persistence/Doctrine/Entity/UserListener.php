@@ -15,8 +15,7 @@ class UserListener
         protected EntityManagerInterface $entityManager,
         protected DoctrineUserMapper     $userMapper,
         protected Security     $security
-    )
-    {
+    ) {
     }
 
     public function prePersist(PrePersistEventArgs $args): void

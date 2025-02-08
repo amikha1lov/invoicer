@@ -6,5 +6,4 @@ namespace App\Infrastructure\Auth\Exceptions;
 
 class LoadUserByIdentifierException extends \Exception
 {
-
 }

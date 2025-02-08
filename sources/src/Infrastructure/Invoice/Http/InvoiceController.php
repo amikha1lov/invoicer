@@ -20,8 +20,7 @@ class InvoiceController extends AbstractController
     public function __construct(
         private readonly SubmitInvoiceUseCase $useCase,
         private readonly MessageBusInterface  $messageBus
-    )
-    {
+    ) {
     }
 
     #[Route(path: '/invoice', name: 'invoice', methods: ['POST'])]

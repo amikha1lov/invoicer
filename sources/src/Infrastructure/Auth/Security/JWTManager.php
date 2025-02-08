@@ -15,8 +15,7 @@ readonly class JWTManager implements JWTManagerInterface
 {
     public function __construct(
         private ParameterBagInterface $env
-    )
-    {
+    ) {
     }
 
     public function encode(User $user): string

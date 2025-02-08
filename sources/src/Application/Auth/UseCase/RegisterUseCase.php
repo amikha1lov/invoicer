@@ -15,8 +15,7 @@ class RegisterUseCase
         private readonly UserRepositoryInterface $userRepository,
         private readonly JWTManagerInterface $jwtManager,
         private readonly UserFactoryInterface $userFactory,
-    )
-    {
+    ) {
     }
 
     public function __invoke(RegisterUseCaseRequest $request): RegisterUseCaseResponse

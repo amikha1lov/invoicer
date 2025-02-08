@@ -17,8 +17,8 @@ class JWTAuthenticator extends AbstractAuthenticator
 {
     public function __construct(
         private readonly JWTManagerInterface   $JWTManager,
-        private readonly UserProviderInterface $userProvider)
-    {
+        private readonly UserProviderInterface $userProvider
+    ) {
     }
 
     public function supports(Request $request): ?bool

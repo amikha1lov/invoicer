@@ -8,7 +8,6 @@ class LoginUseCaseResponse
 {
     public function __construct(
         public readonly string $token,
-    )
-    {
+    ) {
     }
 }

@@ -6,5 +6,4 @@ namespace App\Application\Auth\Exceptions;
 
 class AuthenticationException extends \Exception
 {
-
 }

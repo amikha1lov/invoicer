@@ -16,15 +16,14 @@ class LoginUseCase
         private readonly UserRepositoryInterface $userRepository,
         private readonly JWTManagerInterface $jwtManager,
         private readonly PasswordHasherInterface $passwordHasher,
-    )
-    {
+    ) {
     }
 
     public function __invoke(LoginUseCaseRequest $request): LoginUseCaseResponse
     {
         $user = $this->userRepository->findByEmail($request->email);
 
-        if(!$user) {
+        if (!$user) {
             throw new UserNotFoundException('Пользователь не найден');
         }
 

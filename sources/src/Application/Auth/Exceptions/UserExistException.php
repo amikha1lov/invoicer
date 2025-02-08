@@ -6,5 +6,4 @@ namespace App\Application\Auth\Exceptions;
 
 class UserExistException extends \Exception
 {
-
 }

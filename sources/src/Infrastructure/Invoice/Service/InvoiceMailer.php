@@ -15,8 +15,7 @@ readonly class InvoiceMailer implements InvoiceMailerInterface
     public function __construct(
         private MailerInterface       $mailer,
         private ParameterBagInterface $env
-    )
-    {
+    ) {
     }
 
     public function sendInvoice(Invoice $invoice, string $pdfContent): void

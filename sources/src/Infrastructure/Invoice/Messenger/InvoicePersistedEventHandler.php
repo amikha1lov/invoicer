@@ -15,8 +15,7 @@ class InvoicePersistedEventHandler
     public function __construct(
         private readonly InvoicePDFGeneratorInterface $pdfGenerator,
         private readonly InvoiceMailerInterface       $mailer
-    )
-    {
+    ) {
     }
 
     public function __invoke(InvoicePersistedEvent $event): void
