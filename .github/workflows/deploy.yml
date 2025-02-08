@@ -55,4 +55,6 @@ jobs:
             
             docker compose exec php bash -c "cd sources && pwd && ls && php bin/console doctrine:migrations:migrate --no-interaction"
             
+            docker compose exec php bash -c "cd sources &&  bin/console cache:clear"
+            
             docker compose exec php bash -c "cd sources && supervisorctl restart messenger-consume:*"
